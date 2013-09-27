@@ -5,11 +5,25 @@
 
 # -- Solution 1 --
 
-# Populate array of natural numbers under 1000.
-num_arr = (1..999).to_a;
+# Declaring variables
+term_1 = 1
+term_2 = 2
+terms = 0
+terms_array = [1, 2]
 
-# Selecting all multiples of 3 and 5
-num_multiple = num_arr.select { |x| x%3==0 || x%5==0 }
+# Iteration
+until terms >= 4000000 do
+	terms = term_1 + term_2
+	terms_array.push(terms)
+	term_1 = term_2
+	term_2 = terms
+end
 
-# Sum of those multiples
-puts num_sum = num_multiple.reduce(:+)
+# a.pop removes the last element in an array
+terms_array.pop
+
+# Selecting even terms in an array
+even_terms = terms_array.select { |i| i%2 == 0 }
+
+# Displays the sum of even terms
+puts even_terms.reduce(:+)
